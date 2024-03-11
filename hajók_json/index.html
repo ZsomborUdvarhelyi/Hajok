@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hu" ng-app="shipScheduleApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hajó Menetrend</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" ng-controller="shipScheduleController">
+        <h1>Hajók Menetrendje</h1>
+        <button ng-click="loadSchedule()">Menetrend Betöltése</button>
+        <div ng-show="showFilters">
+            <input type="text" placeholder="Honnan" ng-model="filterFrom">
+            <input type="text" placeholder="Hova" ng-model="filterTo">
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Járat</th>
+              <th>Indulási Hely</th>
+              <th>Érkezési Hely</th>
+              <th>Indulási Idő</th>
+              <th>Érkezési Idő</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="ship in ships">
+              <td>{{ ship.jarat }}</td>
+              <td>{{ ship.honnan }}</td>
+              <td>{{ ship.hova }}</td>
+              <td>{{ ship.indul }}</td>
+              <td>{{ ship.erkezik }}</td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
